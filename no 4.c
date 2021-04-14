@@ -7,6 +7,7 @@
 int validasi();
 void akhir();
 void menu();
+void cetakAkhir();
 
 void seedArray(int arr[], int n) {
     int i;
@@ -61,26 +62,26 @@ void bubbleSortPointer(int arr[], int n) {
 }
 
 float countBubbleSort(int arr[], int n) {
-    clock_t waktu = clock();
+    clock_t start = clock();
     bubbleSort(arr, n);
-    waktu = clock() - waktu;
-    float waktu_dibutuhkan = (float)(waktu) / CLOCKS_PER_SEC;
+    clock_t end = clock();
+    float detik = (float)(end - start) / CLOCKS_PER_SEC;
+    return detik;
 }
 
 float countBubbleSortPointer(int arr[], int n) {
-    clock_t waktu = clock();
+    clock_t start = clock();
     bubbleSortPointer(arr, n);
-    waktu = clock() - waktu;
-    float waktu_dibutuhkan = (float)(waktu) / CLOCKS_PER_SEC;
+    clock_t end = clock();
+    float detik = (float)(end - start) / CLOCKS_PER_SEC;
+    return detik;
 }
+
 
 void menu() {
     char pilihan;
-    int cek;
     int n;
-    char d;
     char enterCheck;
-
 
     printf("|==========[ MENU BUBBLE SORTING ]===========|\n");
     printf("|============================================|\n");
@@ -90,69 +91,45 @@ void menu() {
     printf("|1. 1000 Angka                               |\n");
     printf("|2. 16000 Angka             	             |\n");
     printf("|3. 64000 Angka                              |\n");
+    printf("|4. Keluar                                   |\n");
     printf("|============================================|\n");
-//    printf("Masukkan sesuai dengan menu di atas = ");
-//    pilihan = validasi();
-//    if (pilihan) {
-//        switch (pilihan) {
-//            case '1':
-//                n = 1000;
-//                break;
-//            case '2':
-//                n = 16000;
-//                break;
-//            case '3':
-//                n = 64000;
-//                break;
-//            default:
-//                system("cls");
-//                printf("Input Tidak Benar!!!\n");
-//        }
-	do{
-		printf("\t\t\tMasukkan pilihan: ");
-		if((scanf(" %c%c", &pilihan, &enterCheck)) != 2 || enterCheck != '\n'){
-			printf("Inputan salah! Mohon hanya memasukkan angka dari 1 hingga 3\n\n");
-//			fflush(stdin);
-		}
-		else{
-			if(pilihan == '1'){
-				1000;
-				break;
-			}
-			else if(pilihan == '2'){
-				16000;
-				break;
-			}
-			else if(pilihan == '3'){
-				64000;
-				break;
-			}
-			else{
-				printf("Inputan salah! Mohon hanya memasukkan angka dari 1 hingga 3\n\n");
-			}
-		}
-	}while(1);
-        int arr[n];
-        seedArray(arr, n);
-        printf("Array %d data random sebelum di sort :", n);
-        printArray(arr, n);
-        float detik1 = countBubbleSortPointer(arr, n);
-        float detik2 = countBubbleSort(arr, n);
-        printf("\n=====================================================================================================");
-        printf("Array %d data random sesudah di sort :", n);
-        printArray(arr, n);
-        printf("\n=====================================================================================================");
-        printf("\nWaktu Bubble Sort pointer : %lf", detik1);
-        printf("\nWaktu Bubble Sort : %lf", detik2);
-    } 
-//	else {
-//        system("cls");
-//        printf("Input Tidak Benar!!!\n");
-//        return menu();
-//    }
-
-
-
+    do {
+        printf("\nMasukkan pilihan: ");
+        if (scanf("%c%c", & pilihan, & enterCheck) != 2 || enterCheck != '\n') {
+            printf("\nInput Invalid!\n");
+            fflush(stdin);
+        } else {
+            if (pilihan == '1') {
+                n = 1000;
+                break;
+            } else if (pilihan == '2') {
+                n = 16000;
+                break;
+            } else if (pilihan == '3') {
+                n = 64000;
+                break;
+            } else if (pilihan == '4') {
+                cetakAkhir();
+                break;
+            } else {
+                printf("\nInput Invalid!\n");
+            }
+        }
+    } while (1);
+    int arr[n];
+    seedArray(arr, n);
+    printf("Array %d data random sebelum di sort :", n);
+    printArray(arr, n);
+    float detik1 = countBubbleSortPointer(arr, n);
+    float detik2 = countBubbleSort(arr, n);
+    printf("\n=====================================================================================================");
+    printf("Array %d data random sesudah di sort :", n);
+    printArray(arr, n);
+    printf("\n=====================================================================================================");
+    printf("\nWaktu Bubble Sort pointer : %f", detik1);
+    printf("\nWaktu Bubble Sort : %f", detik2);
+    akhir();
+}
 
 int main() {
 
@@ -161,18 +138,41 @@ int main() {
     return 0;
 }
 
-int validasi() { //validasi input
-    char angka;
-    char karakter;
-    
-	do{
-		if (scanf("%c%c", & angka, & karakter) != 2 || karakter != '\n') {
-        printf("\nInput Invalid!\n");
-        printf("Masukkan sesuai dengan menu di atas = ");
-        fflush(stdin);
-    } else {
-        return angka;
-        break;
-    }
-	}while(1);   
+void cetakAkhir() {
+    system("cls");
+    printf("-----------------------------------------------\n");
+    printf("* TERIMA KASIH SUDAH MENGGUNAKAN PROGRAM KAMI *\n");
+    printf("|                GOOD BYE >_<                 |\n");
+    printf("*             FROM KELOMPOK 13                *\n");
+    printf("-----------------------------------------------\n");
+}
+
+void akhir() {
+    char pilihan;
+    int n;
+    char enterCheck;
+
+    printf("\n=====================================================================================================\n");
+    printf("\nSilahkan pilih langkah yang ingin anda lakukan selanjutnya\n");
+    printf(" 1. Kembali ke Menu Utama\n");
+    printf(" 2. Keluar\n");
+    do {
+        printf("\nMasukkan pilihan: ");
+        if ((scanf("%c%c", & pilihan, & enterCheck)) != 2 || enterCheck != '\n') {
+            printf("\nInput Invalid!\n");
+            fflush(stdin);
+        } else {
+            if (pilihan == '1') {
+            	system("cls");
+                main();
+                break;
+            } else if (pilihan == '2') {
+            	system("cls");
+                cetakAkhir();
+                break;
+            } else {
+                printf("\nInput Invalid!\n");
+            }
+        }
+    } while (1);
 }
