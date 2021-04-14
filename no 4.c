@@ -75,7 +75,7 @@ float countBubbleSortPointer(int arr[], int n) {
 }
 
 void menu() {
-    int pilihan;
+    char pilihan;
     int cek;
     int n;
     char d;
@@ -95,20 +95,18 @@ void menu() {
     pilihan = validasi();
     if (pilihan) {
         switch (pilihan) {
-            case 1:
+            case '1':
                 n = 1000;
                 break;
-            case 2:
+            case '2':
                 n = 16000;
                 break;
-            case 3:
+            case '3':
                 n = 64000;
                 break;
             default:
                 system("cls");
                 printf("Input Tidak Benar!!!\n");
-                return menu();
-                break;
         }
         int arr[n];
         seedArray(arr, n);
@@ -122,11 +120,12 @@ void menu() {
         printf("\n=====================================================================================================");
         printf("\nWaktu Bubble Sort pointer : %lf", detik1);
         printf("\nWaktu Bubble Sort : %lf", detik2);
-    } else {
-        system("cls");
-        printf("Input Tidak Benar!!!\n");
-        return menu();
-    }
+    } 
+//	else {
+//        system("cls");
+//        printf("Input Tidak Benar!!!\n");
+//        return menu();
+//    }
 
 }
 
@@ -138,24 +137,18 @@ int main() {
     return 0;
 }
 
-void cetakAkhir() {
-    system("cls");
-    printf("-----------------------------------------------\n");
-    printf("* TERIMA KASIH SUDAH MENGGUNAKAN PROGRAM KAMI *\n");
-    printf("|                GOOD BYE >_<                 |\n");
-    printf("*             FROM KELOMPOK 13                *\n");
-    printf("-----------------------------------------------\n");
-}
-
 int validasi() { //validasi input
-    int angka;
+    char angka;
     char karakter;
-    if (scanf("%d%c", & angka, & karakter) != 2 || angka <= 0 || karakter != '\n') {
+    
+	do{
+		if (scanf("%c%c", & angka, & karakter) != 2 || karakter != '\n') {
         printf("\nInput Invalid!\n");
         printf("Masukkan sesuai dengan menu di atas = ");
         fflush(stdin);
-        return validasi();
     } else {
         return angka;
+        break;
     }
+	}while(1);   
 }
