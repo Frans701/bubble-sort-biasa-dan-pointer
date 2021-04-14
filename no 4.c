@@ -79,7 +79,7 @@ void menu() {
     int cek;
     int n;
     char d;
-    char checkchar;
+    char enterCheck;
 
 
     printf("|==========[ MENU BUBBLE SORTING ]===========|\n");
@@ -91,23 +91,47 @@ void menu() {
     printf("|2. 16000 Angka             	             |\n");
     printf("|3. 64000 Angka                              |\n");
     printf("|============================================|\n");
-    printf("Masukkan sesuai dengan menu di atas = ");
-    pilihan = validasi();
-    if (pilihan) {
-        switch (pilihan) {
-            case '1':
-                n = 1000;
-                break;
-            case '2':
-                n = 16000;
-                break;
-            case '3':
-                n = 64000;
-                break;
-            default:
-                system("cls");
-                printf("Input Tidak Benar!!!\n");
-        }
+//    printf("Masukkan sesuai dengan menu di atas = ");
+//    pilihan = validasi();
+//    if (pilihan) {
+//        switch (pilihan) {
+//            case '1':
+//                n = 1000;
+//                break;
+//            case '2':
+//                n = 16000;
+//                break;
+//            case '3':
+//                n = 64000;
+//                break;
+//            default:
+//                system("cls");
+//                printf("Input Tidak Benar!!!\n");
+//        }
+	do{
+		printf("\t\t\tMasukkan pilihan: ");
+		if((scanf(" %c%c", &pilihan, &enterCheck)) != 2 || enterCheck != '\n'){
+			printf("Inputan salah! Mohon hanya memasukkan angka dari 1 hingga 3\n\n");
+//			fflush(stdin);
+		}
+		else{
+			if(pilihan == '1'){
+				1000;
+				break;
+			}
+			else if(pilihan == '2'){
+				16000;
+				break;
+			}
+			else if(pilihan == '3'){
+				64000;
+				break;
+			}
+			else{
+				printf("Inputan salah! Mohon hanya memasukkan angka dari 1 hingga 3\n\n");
+			}
+		}
+	}while(1);
         int arr[n];
         seedArray(arr, n);
         printf("Array %d data random sebelum di sort :", n);
@@ -127,7 +151,7 @@ void menu() {
 //        return menu();
 //    }
 
-}
+
 
 
 int main() {
