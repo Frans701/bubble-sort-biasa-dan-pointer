@@ -18,6 +18,12 @@ void seedArray(int arr[], int n) {
 
 }
 
+void dupArray(int source[], int target[], int n) {
+    int i;
+    for (i = 0; i < n; i++)
+        target[i] = source[i];
+}
+
 void printArray(int arr[], int n) {
     int i;
     for (i = 0; i < n; i++) {
@@ -117,11 +123,13 @@ void menu() {
         }
     } while (1);
     int arr[n];
+    int arr2[n];
     seedArray(arr, n);
+    dupArray(arr, arr2, n);
     printf("Array %d data random sebelum di sort :", n);
     printArray(arr, n);
     float detik1 = countBubbleSortPointer(arr, n);
-    float detik2 = countBubbleSort(arr, n);
+    float detik2 = countBubbleSort(arr2, n);
     printf("\n=====================================================================================================");
     printf("Array %d data random sesudah di sort :", n);
     printArray(arr, n);
@@ -139,7 +147,6 @@ int main() {
 }
 
 void cetakAkhir() {
-    system("cls");
     printf("-----------------------------------------------\n");
     printf("* TERIMA KASIH SUDAH MENGGUNAKAN PROGRAM KAMI *\n");
     printf("|                GOOD BYE >_<                 |\n");
@@ -149,7 +156,6 @@ void cetakAkhir() {
 
 void akhir() {
     char pilihan;
-    int n;
     char enterCheck;
 
     printf("\n=====================================================================================================\n");
