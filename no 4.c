@@ -125,17 +125,23 @@ void menu() {
     int arr[n];
     int arr2[n];
     seedArray(arr, n);
-    dupArray(arr, arr2, n);
+
     printf("Array %d data random sebelum di sort :", n);
     printArray(arr, n);
+    dupArray(arr, arr2, n);
     float detik1 = countBubbleSortPointer(arr, n);
     float detik2 = countBubbleSort(arr2, n);
     printf("\n=====================================================================================================");
     printf("Array %d data random sesudah di sort :", n);
     printArray(arr, n);
-    printf("\n=====================================================================================================");
+    printf("\n=====================================================================================================\n");
     printf("\nWaktu Bubble Sort pointer : %f", detik1);
-    printf("\nWaktu Bubble Sort : %f", detik2);
+    printf("\nWaktu Bubble Sort tanpa pointer: %f\n", detik2);
+    if (detik2 <= detik1) {
+        printf("\nBubble Sort tanpa pointer yang paling cepat\n");
+    } else {
+        printf("\nBubble Sort pointer yang paling cepat\n");
+    }
     akhir();
 }
 
@@ -169,11 +175,11 @@ void akhir() {
             fflush(stdin);
         } else {
             if (pilihan == '1') {
-            	system("cls");
+                system("cls");
                 main();
                 break;
             } else if (pilihan == '2') {
-            	system("cls");
+                system("cls");
                 cetakAkhir();
                 break;
             } else {
